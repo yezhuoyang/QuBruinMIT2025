@@ -7,7 +7,7 @@ Implemented by: Lorenzo
 '''
 
 @move.vmove()
-def local_y_rotation(state:move.core.AtomState, rotation_angle, target_indices:list, direction:str='plus'):
+def local_y_rotation(state:move.core.AtomState, rotation_angle, target_indices:list, direction:str='plus') -> move.core.AtomState:
     '''
     method implementing local y-rotations.
 
@@ -30,7 +30,7 @@ def local_y_rotation(state:move.core.AtomState, rotation_angle, target_indices:l
     state = move.LocalXY(atom_state=state,x_exponent=dir_angle,axis_phase_exponent=rotation_angle,indices=target_indices)
     return state
 
-def global_y_rotation(state:move.core.AtomState, rotation_angle, direction:str='plus'):
+def global_y_rotation(state:move.core.AtomState, rotation_angle, direction:str='plus') -> move.core.AtomState:
     '''
     method implementing local x-rotations.
 

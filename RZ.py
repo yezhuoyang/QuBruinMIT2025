@@ -7,7 +7,7 @@ Implemented by: Lorenzo
 '''
 
 @move.vmove()
-def local_z_rotation(state:move.core.AtomState, rotation_angle, target_indices:list):
+def local_z_rotation(state:move.core.AtomState, rotation_angle, target_indices:list) -> move.core.AtomState:
     '''
     method implementing local z-rotations.
 
@@ -25,7 +25,7 @@ def local_z_rotation(state:move.core.AtomState, rotation_angle, target_indices:l
     return state
 
 @move.vmove()
-def global_z_rotation(state:move.core.AtomState, rotation_angle):
+def global_z_rotation(state:move.core.AtomState, rotation_angle) -> move.core.AtomState:
     '''
     method implementing local x-rotations.
 

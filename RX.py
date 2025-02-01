@@ -8,7 +8,7 @@ Implemented by: Lorenzo
 
 
 @move.vmove()
-def local_x_rotation(state:move.core.AtomState, rotation_angle, target_indices:list, direction:str='plus'):
+def local_x_rotation(state:move.core.AtomState, rotation_angle, target_indices:list, direction:str='plus') -> move.core.AtomState:
     '''
     method implementing local x-rotations.
 
@@ -32,7 +32,7 @@ def local_x_rotation(state:move.core.AtomState, rotation_angle, target_indices:l
     return state
 
 @move.vmove()
-def global_x_rotation(state:move.core.AtomState, rotation_angle, direction:str='plus'):
+def global_x_rotation(state:move.core.AtomState, rotation_angle, direction:str='plus') -> move.core.AtomState:
     '''
     method implementing global x-rotations.
 
