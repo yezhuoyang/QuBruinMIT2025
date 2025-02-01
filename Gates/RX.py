@@ -27,9 +27,9 @@ def local_x_rotation(state:move.core.AtomState, rotation_angle, starting_indices
     '''
 
     if direction == 'minus':
-      dir_angle = 0
+      dir_angle = 1.0
     else:
-      dir_angle = 1.0 
+      dir_angle = 0.
     state.gate[target_indices] = move.Move(state.storage[starting_indices])
     state = move.LocalXY(atom_state=state,x_exponent=dir_angle,axis_phase_exponent=rotation_angle,indices=target_indices)
     state.storage[starting_indices] = move.Move(state.gate[target_indices])
@@ -55,9 +55,9 @@ def global_x_rotation(state:move.core.AtomState, rotation_angle, starting_indice
     '''
 
     if direction == 'minus':
-      dir_angle = 0
+      dir_angle = 1.0
     else:
-      dir_angle = 1.0 
+      dir_angle = 0. 
     state.gate[target_indices] = move.Move(state.storage[starting_indices])
     state = move.GlobalXY(atom_state=state,x_exponent=dir_angle, axis_phase_exponent=rotation_angle)
     state.storage[starting_indices] = move.Move(state.gate[target_indices])
