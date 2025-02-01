@@ -21,7 +21,7 @@ def LocalH(state: move.core.AtomState, indices) -> move.core.AtomState:
 
 # GLOBAL GATE SET ---     
 @move.vmove()
-def GlobalCX(state: move.core.AtomState, storage_site: int, gate_index: int):
+def CX(state: move.core.AtomState, storage_site: int, gate_index: int):
     state.gate[[gate_index]] = move.Move(state.storage[[storage_site]])
     state = LocalH(state, [gate_index])
     state = move.GlobalCZ(state)
@@ -30,48 +30,19 @@ def GlobalCX(state: move.core.AtomState, storage_site: int, gate_index: int):
     return state
 
 @move.vmove()
-def GlobalCRX(state: move.core.AtomState, storage_site: int, gate_index: int, theta: int):
+def CRX(state: move.core.AtomState, storage_site: int, gate_index: int, theta: int):
     state.gate[[gate_index]] = move.Move(state.storage[[storage_site]])
-    state = move.GlobalCX(state)
+    state = move.CX(state)
     state = move.GlobalXY(atom_state=state, x_exponent=theta, axis_phase_exponent=0.0)
-    state = move.GlobalCX(state)
+    state = move.CX(state)
     state.storage[[storage_site]] = move.Move(state.gate[[gate_index]])
     return state
 
 @move.vmove()
-def GlobalCRY(state: move.core.AtomState, storage_site: int, gate_index: int, theta: int):
+def CRY(state: move.core.AtomState, storage_site: int, gate_index: int, theta: int):
     state.gate[[gate_index]] = move.Move(state.storage[[storage_site]])
-    state = move.GlobalCX(state)
+    state = move.CX(state)
     state = move.GlobalXY(atom_state=state, x_exponent=0.0, axis_phase_exponent=theta)
-    state = move.GlobalCX(state)
-    state.storage[[storage_site]] = move.Move(state.gate[[gate_index]])
-    return state
-
-
-# LOCAL GATE SET 
-@move.vmove()
-def LocalCX(state: move.core.AtomState, storage_site: int, gate_index: int):
-    state.gate[[gate_index]] = move.Move(state.storage[[storage_site]])
-    state = LocalH(state, [gate_index])
-    state = move.LocalCZ(state)
-    state = LocalH(state, [gate_index])
-    state.storage[[storage_site]] = move.Move(state.gate[[gate_index]])
-    return state
-
-@move.vmove()
-def LocalCRX(state: move.core.AtomState, storage_site: int, gate_index: int, theta: int):
-    state.gate[[gate_index]] = move.Move(state.storage[[storage_site]])
-    state = move.LocalCX(state)
-    state = move.LocalXY(atom_state=state, x_exponent=theta, axis_phase_exponent=0.0)
-    state = move.LocalCX(state)
-    state.storage[[storage_site]] = move.Move(state.gate[[gate_index]])
-    return state
-
-@move.vmove()
-def LocalCRY(state: move.core.AtomState, storage_site: int, gate_index: int, theta: int):
-    state.gate[[gate_index]] = move.Move(state.storage[[storage_site]])
-    state = move.LocalCX(state)
-    state = move.LocalXY(atom_state=state, x_exponent=0.0, axis_phase_exponent=theta)
-    state = move.LocalCX(state)
+    state = move.CX(state)
     state.storage[[storage_site]] = move.Move(state.gate[[gate_index]])
     return state
