@@ -1,5 +1,6 @@
 from qiskit import QuantumCircuit
 
+
 @move.vmove()
 def local_z_rotation(state:move.core.AtomState, phi, indices):
     state = move.LocalRz(state, phi, indices)

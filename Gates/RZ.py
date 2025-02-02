@@ -1,4 +1,7 @@
 from bloqade import move
+import math
+
+pi = math.pi
 
 '''
 Module implementing Rz rotations, both local and global rotation.
@@ -23,7 +26,7 @@ def local_z_rotation(state:move.core.AtomState, rotation_angle, starting_indices
         state: modified move.core.AtomState object
     '''
     state.gate[target_indices] = move.Move(state.storage[starting_indices])
-    state = move.LocalRz(atom_state=state,axis_phase_exponent=rotation_angle,indices=target_indices)
+    state = move.LocalRz(atom_state=state,axis_phase_exponent=rotation_angle*pi,indices=target_indices)
     state.storage[starting_indices] = move.Move(state.gate[target_indices])
     return state
 
@@ -47,7 +50,7 @@ def global_z_rotation(state:move.core.AtomState, starting_indices:list, target_i
     '''
     
     state.gate[target_indices] = move.Move(state.storage[starting_indices])
-    state = move.GlobalRz(atom_state=state,phi=rotation_angle)
+    state = move.GlobalRz(atom_state=state,phi=rotation_angle*pi)
     state.storage[starting_indices] = move.Move(state.gate[target_indices])
 
     return state
