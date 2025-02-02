@@ -1,4 +1,7 @@
 from bloqade import move
+import math
+
+pi = math.pi
 
 '''
 Module implementing Ry rotations, both local and global rotation.
@@ -23,7 +26,7 @@ def local_y_rotation(state:move.core.AtomState, rotation_angle, starting_indices
     '''
 
     state.gate[target_indices] = move.Move(state.storage[starting_indices])
-    state = move.LocalXY(atom_state=state,x_exponent=rotation_angle, axis_phase_exponent=0.5, 
+    state = move.LocalXY(atom_state=state,x_exponent=rotation_angle*pi, axis_phase_exponent=0.5*pi, 
                          indices=target_indices)
     state.storage[starting_indices] = move.Move(state.gate[target_indices])
     return state
@@ -45,6 +48,6 @@ def global_y_rotation(state:move.core.AtomState, rotation_angle, starting_indice
     '''
 
     state.gate[target_indices] = move.Move(state.storage[starting_indices])
-    state = move.GlobalXY(atom_state=state,x_exponent=rotation_angle, axis_phase_exponent=0.5)
+    state = move.GlobalXY(atom_state=state,x_exponent=rotation_angle*pi, axis_phase_exponent=0.5*pi)
     state.storage[starting_indices] = move.Move(state.gate[target_indices])
     return state

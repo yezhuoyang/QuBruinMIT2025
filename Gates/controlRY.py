@@ -1,5 +1,8 @@
 #  shika - controlled Rotations
 from qiskit import QuantumCircuit
+import math
+
+pi = math.pi
 
 # qiskit implementation
 # def controlled_rx(circuit, control, target, theta):
@@ -13,12 +16,7 @@ from qiskit import QuantumCircuit
 #     circuit.cx(control, target)
 
 
-@move.vmove()
-def LocalH(state: move.core.AtomState, indices) -> move.core.AtomState:
-    state = move.LocalXY(state, 0.25, 0.5, indices)
-    state = move.LocalRz(state, pi, indices)
-    state = move.LocalXY(state, -0.25, 0.5, indices)
-    return state
+
 
 # GLOBAL GATE SET ---     
 @move.vmove()
@@ -34,7 +32,7 @@ def CX(state: move.core.AtomState, storage_site: int, gate_index: int):
 def CRY(state: move.core.AtomState, storage_site: int, gate_index: int, theta: int):
     state.gate[[gate_index]] = move.Move(state.storage[[storage_site]])
     state = move.CX(state)
-    state = move.GlobalXY(atom_state=state, x_exponent=0.0, axis_phase_exponent=theta)
+    state = move.GlobalXY(atom_state=state, x_exponent=0.0*pi, axis_phase_exponent=theta)
     state = move.CX(state)
     state.storage[[storage_site]] = move.Move(state.gate[[gate_index]])
     return state
