@@ -56,7 +56,7 @@ def main():
     state = move.GlobalCZ(atom_state=state) 
     state.storage[[2]] = move.Move(state.gate[[1]]) # move back
 
-    #  CZ 
+    #  CZ DONE
     state.gate[[1]] = move.Move(state.storage[[1]]) 
     state = move.GlobalCZ(atom_state=state) 
     state.storage[[0,1]] = move.Move(state.gate[[0,1]]) # move back
