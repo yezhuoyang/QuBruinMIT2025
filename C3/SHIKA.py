@@ -29,11 +29,12 @@ def main():
     state = move.GlobalCZ(state)
     state = move.LocalXY(atom_state=state,x_exponent=-0.5*pi,axis_phase_exponent=0.5*pi,indices=t_ind)
     state = move.LocalXY(atom_state=state,x_exponent=-1.0*pi,axis_phase_exponent=0.0,indices=t_ind)
-    state.storage[[0,1,2]] = move.Move(state.gate[[0,1,2]])
+    # state.storage[[0,1,2]] = move.Move(state.gate[[0,1,2]])
 
 #Second CRz gates----
-    state.gate[[2]] = move.Move(state.storage[[0]])
-    state.gate[[0,1]] = move.Move(state.storage[[1,2]])
+    state.storage[[0]] = move.Move(state.gate[[2]])
+    state.gate[[2]] = move.Move(state.gate[[0]])
+    state.gate[[0]] = move.Move(state.storage[[1]])
     t_ind=[1,3]
     theta=0.15524282950959892
     beta=-1*pi+(theta/2)
