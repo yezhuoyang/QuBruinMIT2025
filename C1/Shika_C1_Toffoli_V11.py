@@ -59,12 +59,10 @@ def main():
     #  CZ DONE
     state.gate[[1]] = move.Move(state.storage[[1]]) 
     state = move.GlobalCZ(atom_state=state) 
-    state.storage[[0,1]] = move.Move(state.gate[[0,1]]) # move back
 
-    # rz 1/4 pi
-    state.gate[[1]] = move.Move(state.storage[[0]])
-    state = move.LocalRz(atom_state=state,phi=(1/4)*pi,indices=[1])
-    state.storage[[0]] = move.Move(state.gate[[1]])
+    # rz 1/4 pi DONE 
+    state = move.LocalRz(atom_state=state,phi=(1/4)*pi,indices=[0])
+    state.storage[[0,1]] = move.Move(state.gate[[0,1]]) # move back
 
     # Rx: -pi/4
     state.gate[[2]] = move.Move(state.storage[[1]])
