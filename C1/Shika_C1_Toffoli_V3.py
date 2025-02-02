@@ -25,6 +25,7 @@ def main():
     # 1st Rx: -pi/4 DONE
     state = move.LocalXY(atom_state=state, x_exponent=-0.25 * pi,indices=[1], 
                          axis_phase_exponent=0.0)
+    state.storage[[1]] = move.Move(state.gate[[0]]) # move back 
     
     # 2nd CZ DONE
     state.gate[[0]] = move.Move(state.storage[[0]]) 
