@@ -36,7 +36,7 @@ def main():
                          axis_phase_exponent=0.0)
     state.storage[[0]] = move.Move(state.gate[[0]])
 
-    # 3rd CZ 
+    # 3rd CZ DONE
     state.gate[[0]] = move.Move(state.storage[[1]]) 
     state = move.GlobalCZ(atom_state=state) 
     state.storage[[1,2]] = move.Move(state.gate[[0,1]]) # move back 
