@@ -1,5 +1,7 @@
 from qiskit import QuantumCircuit
+import math
 
+pi = math.pi
 
 @move.vmove()
 def local_z_rotation(state:move.core.AtomState, phi, indices):
