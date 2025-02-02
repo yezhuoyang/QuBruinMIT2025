@@ -105,7 +105,7 @@ def main():
     state = move.GlobalCZ(state)
     state = move.LocalXY(atom_state=state,x_exponent=-0.5*pi,axis_phase_exponent=0.5*pi,indices=t_ind)
     state = move.LocalXY(atom_state=state,x_exponent=-1.0*pi,axis_phase_exponent=0.0,indices=t_ind)
-    state.storage[[0,1,2,3]] = move.Move(state.gate[[0,1,2,3]])
+    state.storage[[0,1,2,3]] = move.Move(state.gate[[2,1,0,3]])
 
     
 #Rx Global 2---------
