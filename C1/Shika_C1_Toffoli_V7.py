@@ -42,12 +42,10 @@ def main():
 
     # rz -3/4 pi DONE
     state = move.LocalRz(atom_state=state,phi=(-3/4)*pi,indices=[0])
-    state.storage[[1,2]] = move.Move(state.gate[[0,1]])
 
     # ry(pi/2)
-    state.gate[[2]] = move.Move(state.storage[[1]])
-    state = move.LocalXY(atom_state=state,x_exponent=(1/2)*pi, axis_phase_exponent=-0.5*pi, indices=[2])
-    state.storage[[1]] = move.Move(state.gate[[2]])
+    state = move.LocalXY(atom_state=state,x_exponent=(1/2)*pi, axis_phase_exponent=-0.5*pi, indices=[0])
+    state.storage[[1,2]] = move.Move(state.gate[[0,1]])
 
     # Rx: -pi/4
     state.gate[[2]] = move.Move(state.storage[[2]])
