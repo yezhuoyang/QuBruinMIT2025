@@ -43,7 +43,7 @@ def main():
     # rz -3/4 pi DONE
     state = move.LocalRz(atom_state=state,phi=(-3/4)*pi,indices=[0])
 
-    # ry(pi/2)
+    # ry(pi/2) DONE
     state = move.LocalXY(atom_state=state,x_exponent=(1/2)*pi, axis_phase_exponent=-0.5*pi, indices=[0])
     state.storage[[1,2]] = move.Move(state.gate[[0,1]])
 
