@@ -40,7 +40,7 @@ def main():
     state.gate[[0]] = move.Move(state.storage[[1]]) 
     state = move.GlobalCZ(atom_state=state) 
 
-    # rz -3/4 pi
+    # rz -3/4 pi DONE
     state = move.LocalRz(atom_state=state,phi=(-3/4)*pi,indices=[0])
     state.storage[[1,2]] = move.Move(state.gate[[0,1]])
 
