@@ -35,7 +35,7 @@ def main():
     state.storage[[0]] = move.Move(state.gate[[2]])
     state.gate[[2]] = move.Move(state.gate[[0]])
     state.gate[[0]] = move.Move(state.storage[[1]])
-    t_ind=[1,3]
+    t_ind=[0,3]
     theta=0.15524282950959892
     beta=-1*pi+(theta/2)
     state = move.LocalRz(atom_state=state,phi=(beta),indices=t_ind)
