@@ -33,7 +33,7 @@ def main():
     state.storage[[0,2]] = move.Move(state.gate[[0,1]]) # move back 
 
     # 2nd Rx: pi/4 DONE
-    state = move.LocalXY(atom_state=state, x_exponent=0.25 * pi,indices=[2], 
+    state = move.LocalXY(atom_state=state, x_exponent=0.25 * pi,indices=[1], 
                          axis_phase_exponent=0.0)
   
     # 3rd CZ 
