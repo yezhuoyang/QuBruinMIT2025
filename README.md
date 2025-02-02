@@ -34,9 +34,10 @@ After transpilation, we implement and challenge circuit and apply different rule
 
 | Challenge | Best Score |
 |-----------|-------|
-| Challenge 1 | Score |
-| Challenge 2 | Score |
-| Challenge 3 | Score |
-| Challenge 4 | Score |
-| Challenge 5 | Score |
+| Challenge 1.1 | 9.53 |
+| Challenge 1.2 | 29.8 |
+| Challenge 2 | 29.2 |
+| Challenge 3 | 83.4 |
+| Challenge 4 | 48.9 |
+| Challenge 5 | 35.2 |
 
