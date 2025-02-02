@@ -5,7 +5,6 @@ from kirin.passes import aggressive
 from iquhack_scoring import MoveScorer
 from bloqade.move.emit import MoveToQASM2
 
-
 pi = math.pi
 
 # GATES
@@ -83,9 +82,6 @@ def main():
     state = move.LocalXY(atom_state=state, x_exponent=(1/4)*pi,indices=[0], 
                          axis_phase_exponent=0.0)
     state.storage[[2]] = move.Move(state.gate[[0]])
-    
-
-    
     
     move.Execute(state)
     return state
