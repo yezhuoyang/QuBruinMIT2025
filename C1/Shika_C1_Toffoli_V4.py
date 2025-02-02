@@ -17,19 +17,6 @@ def main():
     indices = [0, 1, 2]
     state = move.Init(qubits=qubits, indices=indices)
 
-
-
-
-   
-        
-        # 2nd CZ DONE
-        state.gate[[0]] = move.Move(state.storage[[0]]) 
-        state = move.GlobalCZ(atom_state=state)
-    
-        # 2nd Rx: pi/4 DONE
-        state = move.LocalXY(atom_state=state, x_exponent=0.25 * pi,indices=[1], 
-                             axis_phase_exponent=0.0)
-
     # 1st CZ DONE
     state.gate[[0,1]] = move.Move(state.storage[[1,2]]) 
     state = move.GlobalCZ(atom_state=state) 
