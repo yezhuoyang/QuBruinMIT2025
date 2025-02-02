@@ -13,6 +13,10 @@ from qiskit import QuantumCircuit
 #     circuit.cx(control, target)
 
 @move.vmove()
+def local_z_rotation(state:move.core.AtomState, phi indices):
+    state = move.LocalRz(state, phi, indices)
+
+@move.vmove()
 def LocalH(state: move.core.AtomState, indices) -> move.core.AtomState:
     state = move.LocalXY(state, 0.25, 0.5, indices)
     state = move.LocalRz(state, pi, indices)
@@ -46,3 +50,16 @@ def CRY(state: move.core.AtomState, storage_site: int, gate_index: int, theta: i
     state = move.CX(state)
     state.storage[[storage_site]] = move.Move(state.gate[[gate_index]])
     return state
+
+@move.vmove()
+def CRZ(state: move.core.AtomState, storage_site: int, gate_index: int, theta: int):
+    state.gate[[gate_index]] = move.Move(state.storage[[storage_site]])
+    state = move.CZ(state)
+    state = move.LocalRz(state, theta, indices)
+    state = move.CZ(state)
+    state = move.LocalRz(state, -theta, indices)
+
+    # state = global_cz(state)
+    # state = global_z_rotation(state, phi=phi / 2)
+    # state = global_cz(state)
+    # state = global_z_rotation(state, phi=-phi / 2)
