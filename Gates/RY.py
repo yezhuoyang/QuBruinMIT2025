@@ -7,7 +7,7 @@ Implemented by: Lorenzo
 '''
 
 @move.vmove()
-def local_y_rotation(state:move.core.AtomState, rotation_angle, starting_indices:list, target_indices:list, direction:str='plus') -> move.core.AtomState:
+def local_y_rotation(state:move.core.AtomState, rotation_angle, starting_indices, target_indices) -> move.core.AtomState:
     '''
     method implementing local y-rotations.
 
@@ -17,24 +17,19 @@ def local_y_rotation(state:move.core.AtomState, rotation_angle, starting_indices
                         IN QUERA MODULE
         starting_indices: list of position in the storage section to move into the gate section
         target_indices: list of position to gate section perform such a rotations
-        directions: string encoding the direction of the rotation pulse, 'plus' for a rotation along the 
-                    +Y direction and 'minus' for a rotation along -Y direction
 
     Outputs:
         state: modified move.core.AtomState object
     '''
 
-    if direction == 'minus':
-      dir_angle = 0.5
-    else:
-      dir_angle = 1.5 
     state.gate[target_indices] = move.Move(state.storage[starting_indices])
-    state = move.LocalXY(atom_state=state,x_exponent=dir_angle,axis_phase_exponent=rotation_angle,indices=target_indices)
+    state = move.LocalXY(atom_state=state,x_exponent=rotation_angle, axis_phase_exponent=0.5, 
+                         indices=target_indices)
     state.storage[starting_indices] = move.Move(state.gate[target_indices])
     return state
 
-def global_y_rotation(state:move.core.AtomState, rotation_angle, starting_indices:list, 
-                      target_indices:list,  direction:str='plus') -> move.core.AtomState:
+def global_y_rotation(state:move.core.AtomState, rotation_angle, starting_indices, 
+                      target_indices) -> move.core.AtomState:
     '''
     method implementing local x-rotations.
 
@@ -44,18 +39,12 @@ def global_y_rotation(state:move.core.AtomState, rotation_angle, starting_indice
                         IN QUERA MODULE
         starting_indices: list of position in the storage section to move into the gate section
         target_indices: list of position to gate section perform such a rotations
-        directions: string encoding the direction of the rotation pulse, 'plus' for a rotation along the 
-                    +X direction and 'minus' for a rotation along -X direction
-
+    
     Outputs:
         state: modified move.core.AtomState object
     '''
 
-    if direction == 'minus':
-      dir_angle = 0.5
-    else:
-      dir_angle = 1.5 
     state.gate[target_indices] = move.Move(state.storage[starting_indices])
-    state = move.GlobalXY(atom_state=state,x_exponent=dir_angle, axis_phase_exponent=rotation_angle)
+    state = move.GlobalXY(atom_state=state,x_exponent=rotation_angle, axis_phase_exponent=0.5)
     state.storage[starting_indices] = move.Move(state.gate[target_indices])
     return state
